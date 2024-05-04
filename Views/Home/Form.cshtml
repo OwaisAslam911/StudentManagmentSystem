@@ -1,0 +1,55 @@
+﻿@model StudentManagmentSystem.Models.StudentRegViewMode
+
+@{
+    ViewData["Title"] = "Form";
+}
+
+<h1>Form</h1>
+
+<h4>StudentReg</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentRegForm.StudentName" class="control-label"></label>
+                <input asp-for="StudentRegForm.StudentName" class="form-control" />
+                <span asp-validation-for="StudentRegForm.StudentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentRegForm.StudentEmail" class="control-label"></label>
+                <input asp-for="StudentRegForm.StudentEmail" class="form-control" />
+                <span asp-validation-for="StudentRegForm.StudentEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentRegForm.StartDate" class="control-label"></label>
+                <input asp-for="StudentRegForm.StartDate" class="form-control" />
+                <span asp-validation-for="StudentRegForm.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudentRegForm.CourseId" class="control-label"></label>
+                <select asp-for="StudentRegForm.CourseId" class="form-select" aria-label="Default select example" value="select course"  asp-items="ViewBag.CourseId">
+                    <option value="null"></option>
+                    @foreach (var temp in Model.CourseList)
+                    {
+
+                        <option value="@temp.CourseId">@temp.CourseName</option>
+                        
+                    }
+                    
+                    
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Enroll" class="btn btn-primary mt-4" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
